@@ -1,4 +1,3 @@
-#include "TimerOne.h"
 #define a 0
 #define b 1
 #define c 2
@@ -12,11 +11,15 @@
 #define d3 A3
 #define d4 A4
 
-long n = 0;
-int x = 100;
-int count = 0;
+long int CurrentTimeMillis = 0;
+int hour = 0;
+int minute = 0;
+long int ElderTimeMillis;
+long int NewestTimeMillis;
 
 void setup() {
+  Serial.begin(9600);
+
   pinMode(a, OUTPUT);
   pinMode(b, OUTPUT);
   pinMode(c, OUTPUT);
@@ -29,37 +32,46 @@ void setup() {
   pinMode(d2, OUTPUT);
   pinMode(d3, OUTPUT);
   pinMode(d4, OUTPUT);
+
   
   pinMode(A0, INPUT);
 
-  Timer1.initialize(100000);
-  Timer1.attachInterrupt( add );
+  ElderTimeMillis = millis();
 }
 
 void loop() {
-  while (digitalRead(A0) == LOW) {
-    clearLEDs();
-    pickDigit(0);
-    pickNumber((n / 1000));
-    delay(5);
 
-    clearLEDs();
-    pickDigit(1);
-    pickNumber((n % 1000) / 100);
-    delay(5);
+  CurrentTimeMillis += (NewestTimeMillis - ElderTimeMillis);
+  ElderTimeMillis = NewestTimeMillis;
+  Serial.println(CurrentTimeMillis/1000);
 
-    clearLEDs();
-    pickDigit(2);
-    pickNumber(n % 100 / 10);
-    delay(5);
+  hour = ((CurrentTimeMillis/1000) / 3600 );
+  minute = ((CurrentTimeMillis/1000) % 3600 ) / 60 ;
+  Serial.println(minute);
 
-    clearLEDs();
-    pickDigit(3);
-    pickNumber(n % 10);
-    delay(5);
-  }
-  if (digitalRead(A0) == HIGH) { n = 0; count = 0; }
+  clearLEDs();
+  pickDigit(0);
+  pickNumber(hour / 10);
+  delay(5);
+
+  clearLEDs();
+  pickDigit(1);
+  pickNumber(hour % 10);
+  delay(5);
+
+  clearLEDs();
+  pickDigit(2);
+  pickNumber(minute / 10);
+  delay(5);
+
+  clearLEDs();
+  pickDigit(3);
+  pickNumber(minute % 10);
+  delay(5);
+  
+  NewestTimeMillis = millis();
 }
+
 
 void pickDigit(int x) {
   digitalWrite(d1, HIGH);
@@ -199,10 +211,3 @@ void nine() {
   digitalWrite(g, HIGH);
 }
 
-void add() {
-  count ++;
-  if (count == 10) {
-    count = 0;  n++;
-    if (n == 10000) { n = 0; }
-  }
-}
