@@ -15,3 +15,5 @@ Composants :
 * 8 résistances $220 \Omega$
 
 * 2 connecteurs SIL 8 pins
+Emmanuel
+coucou
