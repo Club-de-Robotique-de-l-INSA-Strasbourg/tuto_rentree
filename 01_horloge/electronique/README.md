@@ -24,8 +24,6 @@ Composants :
 
 [Pin out atmega328P-PU](https://doc.riot-os.org/group__boards__atmega328p.html)
 
-
-
 ## Oscillateur atmega328P
 
 L'Atmega possède un oscillateur interne de 8MHz, il n'est donc pas obligé d'en mettre un externe. (Dans l'Arduino UNO Rev3 il y a un oscillateur externe 16MHz).
@@ -40,7 +38,7 @@ Voici quelques liens qui en parlent :
 
 * [Arduino Without External Clock Crystal on ATmega328 - Hackster.io](https://www.hackster.io/techmirtz/arduino-without-external-clock-crystal-on-atmega328-d4fcc4)
 
-* [How To Run Atmega 328,168,88,8 without XTAL, How to Burn bootloader on Atmega without crystal, xtal - YouTube](https://www.youtube.com/watch?v=xxjyhjUDRCY) : Vidéo sur comment rendre un atmega328P autonome 
+* [How To Run Atmega 328,168,88,8 without XTAL, How to Burn bootloader on Atmega without crystal, xtal - YouTube](https://www.youtube.com/watch?v=xxjyhjUDRCY) : Vidéo sur comment rendre un atmega328P autonome
 
 * [Technoblogy - Using an ATmega328 without a crystal](http://www.technoblogy.com/show?1YO1)
 
@@ -49,10 +47,6 @@ Voici quelques liens qui en parlent :
 * [Atmega328: Lose the Crystal and Gain Two Pins : 4 Steps - Instructables](https://www.instructables.com/22-Bit-Binary-Counter-for-Atmega328/)
 
 * [arduino - Atmega Standalone, Running without crystal oscillator - Electrical Engineering Stack Exchange](https://electronics.stackexchange.com/questions/217762/atmega-standalone-running-without-crystal-oscillator)
-
-
-
-
 
 ## Modèle 3D
 
